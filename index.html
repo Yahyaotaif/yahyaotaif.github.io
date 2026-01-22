@@ -1,112 +1,418 @@
-<!DOCTYPE html><html><head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raheel - Smart Ride Booking App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="raheel">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
+        nav a:hover {
+            opacity: 0.8;
+        }
 
-  <title>raheel</title>
-  <link rel="manifest" href="manifest.json">
-  <style id="splash-screen-style">
-    html {
-      height: 100%
-    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    body {
-      margin: 0;
-      min-height: 100%;
-      background-color: #ffffff;
-          background-size: 100% 100%;
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
 
-    .center {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            opacity: 0.95;
+        }
 
-    .contain {
-      display:block;
-      width:100%; height:100%;
-      object-fit: contain;
-    }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
 
-    .stretch {
-      display:block;
-      width:100%; height:100%;
-    }
+        .btn {
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            display: inline-block;
+        }
 
-    .cover {
-      display:block;
-      width:100%; height:100%;
-      object-fit: cover;
-    }
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
 
-    .bottom {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      -ms-transform: translate(-50%, 0);
-      transform: translate(-50%, 0);
-    }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
-    .bottomLeft {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
 
-    .bottomRight {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-  </style>
-  <script id="splash-screen-script">
-    function removeSplashFromWeb() {
-      document.getElementById("splash")?.remove();
-      document.getElementById("splash-branding")?.remove();
-      document.body.style.background = "transparent";
-    }
-  </script>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        /* Download Section */
+        .download {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .download h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .download p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .app-btn {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .app-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        .highlight {
+            color: #764ba2;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-  <picture id="splash">
-      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
-      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
-      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
-  </picture>
-  <script src="flutter_bootstrap.js" async=""></script>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🚗 Raheel</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#download">Download</a></li>
+        </ul>
+    </nav>
 
-  <div style="position:fixed; bottom:12px; right:12px; font-family: Arial, sans-serif; font-size: 13px; background: rgba(255,255,255,0.85); padding: 8px 12px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-    <a href="privacy_policy.html" style="color:#2a6f4e; text-decoration:none; font-weight:600;">سياسة الخصوصية</a>
-  </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Smart Ride Booking Made Easy</h1>
+        <p>Welcome to <span class="highlight">Raheel</span> - Your trusted partner for convenient, safe, and affordable ride booking in Saudi Arabia</p>
+        <div class="cta-buttons">
+            <a href="#download" class="btn btn-primary">Download Now</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
 
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Why Choose Raheel?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast Booking</h3>
+                <p>Book your ride in seconds with our intuitive interface. Quick, reliable, and efficient service at your fingertips.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Secure Payments</h3>
+                <p>Multiple payment options with bank-level security. Pay with confidence using Moyasar integration for seamless transactions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <h3>Real-Time Tracking</h3>
+                <p>Track your driver in real-time and know exactly when they'll arrive. Stay informed every step of your journey.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Rated Drivers</h3>
+                <p>Travel with confidence knowing our drivers are highly rated and verified. Safety is our top priority.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Wide Coverage</h3>
+                <p>Available in major cities across Saudi Arabia. Expanding service areas to reach more customers every day.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>24/7 Support</h3>
+                <p>Customer support available round the clock to assist you with any questions or concerns.</p>
+            </div>
+        </div>
+    </section>
 
-</body></html>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Raheel</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Raheel is revolutionizing the ride-booking experience in Saudi Arabia. Founded with a mission to provide safe, affordable, and reliable transportation services to everyone.</p>
+                <p>Our platform connects drivers and passengers seamlessly, ensuring that every journey is smooth, secure, and satisfying.</p>
+                <p>With advanced features like real-time tracking, secure payments, and 24/7 customer support, we're committed to being the <span class="highlight">number one choice</span> for ride-sharing in the Kingdom.</p>
+                <p>Download Raheel today and experience the future of transportation!</p>
+            </div>
+            <div class="about-image">
+                📱 App Demo
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <h2>Get Raheel Today</h2>
+        <p>Download our mobile app and start your journey with confidence</p>
+        <div class="app-buttons">
+            <a href="https://play.google.com/store" class="app-btn" target="_blank">
+                🤖 Google Play
+            </a>
+            <a href="https://apps.apple.com" class="app-btn" target="_blank">
+                🍎 App Store
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+            <a href="mailto:support@raheel.app">Email</a>
+        </div>
+        <p>&copy; 2026 Raheel. All rights reserved. | Smart Ride Booking Platform | <a href="web/privacy_policy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
