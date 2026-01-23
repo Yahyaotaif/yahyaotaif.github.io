@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>رحيل - تطبيق حجز الرحلات الذكي</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/logo_foreground.png">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,9 +13,10 @@
         }
 
         body {
-            font-family: 'Cairo', 'Poppins', sans-serif;
-            line-height: 1.6;
+            font-family: 'Almarai', sans-serif;
+            line-height: 1.8;
             color: #333;
+            direction: rtl;
         }
 
         /* Navigation */
@@ -43,19 +41,14 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         nav .logo img {
-            width: 32px;
-            height: 32px;
+            height: 50px;
+            width: auto;
+            background: white;
+            padding: 5px;
             border-radius: 8px;
-            object-fit: cover;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         nav ul {
@@ -220,14 +213,24 @@
         }
 
         .about-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 400px;
-            border-radius: 15px;
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 9 / 16;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid #000;
+            padding: 0;
+            margin: 0 auto;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
+        }
+
+        .about-image iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            margin: 0;
+            padding: 0;
+            display: block;
         }
 
         /* Download Section */
@@ -317,7 +320,8 @@
             }
 
             .about-image {
-                height: 250px;
+                max-width: 320px;
+                height: auto;
             }
 
             .cta-buttons {
@@ -340,12 +344,12 @@
     <nav>
         <div class="logo">
             <img src="images/logo_foreground.png" alt="رحيل">
-            رحيل
+            <span>رحيل</span>
         </div>
         <ul>
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#features">المميزات</a></li>
-            <li><a href="#about">عننا</a></li>
+            <li><a href="#about">عن التطبيق</a></li>
             <li><a href="#download">التحميل</a></li>
         </ul>
     </nav>
@@ -353,76 +357,64 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <h1>حجز رحلات ذكي وسهل</h1>
-        <p>مرحبا بك في <span class="highlight">رحيل</span> - شريكك الموثوق لحجز رحلات مريحة وآمنة وبأسعار معقولة في المملكة العربية السعودية</p>
         <div class="cta-buttons">
-            <a href="#download" class="btn btn-primary">تحميل الآن</a>
+            <a href="#download" class="btn btn-primary">حمّل الآن</a>
             <a href="#features" class="btn btn-secondary">اعرف المزيد</a>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <h2>لماذا تختار راحيل؟</h2>
+        <h2>لماذا تختار رحيل؟</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3>حجز سريع</h3>
-                <p>احجز رحلتك في ثوانٍ مع واجهتنا الحدسية. خدمة سريعة وموثوقة وفعالة في متناول يدك.</p>
+                <p>احجز رحلتك في ثوانٍ معدودة من خلال واجهة سهلة الاستخدام. خدمة سريعة وموثوقة وفعالة بين يديك.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💳</div>
-                <h3>دفع آمن</h3>
-                <p>خيارات دفع متعددة بأمان على مستوى البنك. ادفع بثقة باستخدام تكامل Moyasar للمعاملات السلسة.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📍</div>
-                <h3>تتبع فوري</h3>
-                <p>تابع السائق في الوقت الفعلي واعرف متى سيصل بالضبط. ابقَ على اطلاع في كل خطوة من رحلتك.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⭐</div>
-                <h3>سائقون موثوقون</h3>
-                <p>سافر بثقة مع العلم أن سائقينا حاصلون على تقييمات عالية ومتحققون. الأمان أولويتنا الرئيسية.</p>
+                <h3>مدفوعات آمنة</h3>
+                <p>خيارات دفع متعددة بأمان على مستوى البنوك. ادفع بثقة باستخدام تكامل ميسر للمعاملات السلسة.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🌍</div>
                 <h3>تغطية واسعة</h3>
-                <p>متوفر في المدن الكبرى في جميع أنحاء المملكة العربية السعودية. نتوسع في مناطق الخدمة يومياً.</p>
+                <p>متوفر في المدن الرئيسية في جميع أنحاء المملكة العربية السعودية وخارجها. نوسع مناطق الخدمة يومياً.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🛡️</div>
-                <h3>دعم 24/7</h3>
-                <p>دعم العملاء متاح على مدار الساعة لمساعدتك في أي أسئلة أو استفسارات.</p>
+                <h3>دعم على مدار الساعة</h3>
+                <p>دعم العملاء متاح على مدار الساعة طوال أيام الأسبوع لمساعدتك في أي أسئلة أو استفسارات.</p>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <h2>عن راحيل</h2>
+        <h2>عن رحيل</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>راحيل تحدث ثورة في تجربة حجز الرحلات في المملكة العربية السعودية. تأسست بمهمة توفير خدمات نقل آمنة وميسورة وموثوقة للجميع.</p>
-                <p>تربط منصتنا بين السائقين والركاب بسلاسة، مما يضمن أن كل رحلة سلسة وآمنة ومرضية.</p>
-                <p>بفضل الميزات المتقدمة مثل التتبع الفوري والدفع الآمن ودعم العملاء 24/7، نلتزم بأن نكون <span class="highlight">الخيار الأول</span> لمشاركة الرحلات في المملكة.</p>
-                <p>حمل راحيل اليوم وجرب مستقبل النقل!</p>
+                <p> التطبيق يعمل على إعلان رحلة من خلال قائد مركبة، الرحلة تظهر للراكب ويتم حجزها.</p>
+                <p> التطبيق يوفر الإعلان فقط ويربط قائد المركبة بالراكب، ولا يتتبع الرحلة وليس له علاقة بتكلفة النقل.</p>
+                <p>منصتنا تربط السائقين والركاب بسلاسة، مما يضمن أن كل رحلة سلسة وآمنة ومرضية.</p>
+                <p>حمّل رحيل اليوم واختبر مستقبل النقل!</p>
             </div>
             <div class="about-image">
-                📱 تطبيق الديمو
+                <iframe src="https://player.vimeo.com/video/1156871177?badge=0&autopause=0&player_id=0&app_id=58479" width="100%" height="400" 
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen 
+                        style="border-radius: 15px;"></iframe>
             </div>
         </div>
     </section>
 
     <!-- Download Section -->
     <section class="download" id="download">
-        <h2>حمل راحيل اليوم</h2>
-        <p>حمل تطبيقنا المحمول وابدأ رحلتك بثقة</p>
+        <h2>احصل على رحيل اليوم</h2>
+        <p>حمّل تطبيقنا المحمول وابدأ رحلتك بثقة - متوفر حالياً على أندرويد</p>
         <div class="app-buttons">
             <a href="https://play.google.com/store" class="app-btn" target="_blank">
-                🤖 Google Play
-            </a>
-            <a href="https://apps.apple.com" class="app-btn" target="_blank">
-                🍎 App Store
+                🤖 حمّل من متجر قوقل
             </a>
         </div>
     </section>
@@ -432,10 +424,10 @@
         <div class="social-links">
             <a href="https://twitter.com" target="_blank">تويتر</a>
             <a href="https://facebook.com" target="_blank">فيسبوك</a>
-            <a href="https://instagram.com" target="_blank">إنستجرام</a>
-            <a href="mailto:support@raheel.app">البريد الإلكتروني</a>
+            <a href="https://instagram.com" target="_blank">انستقرام</a>
+            <a href="mailto:raheelcorp@outlook.com">البريد الإلكتروني</a>
         </div>
-        <p>&copy; 2026 رحيل. جميع الحقوق محفوظة. | منصة حجز الرحلات الذكية | <a href="privacy_policy.html">سياسة الخصوصية</a></p>
+        <p>&copy; 2026 رحيل. جميع الحقوق محفوظة | منصة حجز الرحلات الذكية | <a href="privacy_policy.html" style="color:#fff; text-decoration:underline;">سياسة الخصوصية</a></p>
     </footer>
 </body>
 </html>
