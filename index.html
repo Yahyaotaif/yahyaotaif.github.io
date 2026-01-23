@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo_foreground.png">
     <style>
         * {
             margin: 0;
@@ -39,6 +40,22 @@
             font-size: 1.8rem;
             font-weight: bold;
             letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav .logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         nav ul {
@@ -321,7 +338,10 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">🚗 رحيل</div>
+        <div class="logo">
+            <img src="images/logo_foreground.png" alt="رحيل">
+            رحيل
+        </div>
         <ul>
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#features">المميزات</a></li>
